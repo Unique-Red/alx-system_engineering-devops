@@ -1,10 +1,11 @@
-# Set the config of a ssh_file
-file_line { 'Change the main private key':
-  path => '/etc/ssh/ssh_config',
-  line => '    IdentityFile ~/.ssh/school',
-}
-
-file_line { 'No Authenticate with passowrd':
-  path => '/etc/ssh/ssh_config',
-  line => '    PasswordAuthentication no',
+# client configuration file
+$file_content = file('/etc/ssh/ssh_config')
+$config = "${file_content}\
+    IdentityFile ~/.ssh/school
+    PasswordAuthentication no
+"
+file {  'school':
+  ensure  => 'present',
+  path    => '/etc/ssh/ssh_config',
+  content => $config
 }
