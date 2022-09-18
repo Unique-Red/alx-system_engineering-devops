@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Bash script that uses ssh to connect to your server using the private
+# key ~/.ssh/holberton with the user ubuntu
+ssh ubuntu@3.229.118.250 -i ~/.ssh/school
